@@ -15,9 +15,15 @@
 
 • Скачиваем файл репозитория
 
+![image](https://github.com/user-attachments/assets/45465c1a-3d19-424a-8a2b-807d4ced2ae3)
+
+
 3. `sudo yum install docker-ce docker-ce-cli containerd.io`
 
 • Устанавливаем docker
+
+![image](https://github.com/user-attachments/assets/b8559b89-bcac-4e3c-abb1-2311edaef58c)
+
 
 4. `sudo systemctl enable docker --now`
 
@@ -32,9 +38,15 @@
 • Объявление переменной COMVER, полученной в результате curl запроса, хранящей в себе номер последней
 версии Docker Compose
 
+![image](https://github.com/user-attachments/assets/6c6233d6-80b9-41ca-a707-24b78368846d)
+
+
 7. `sudo curl -L "https://github.com/docker/compose/releases/download/$COMVER/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose`                        
 
 • Теперь скачиваем скрипт docker-compose последней версии, используя объявленную ранее переменную и помещаем его в каталог /usr/bin
+
+![image](https://github.com/user-attachments/assets/73fdf62b-cd11-4111-a46b-f6a2c39a2d34)
+
 
 8. `sudo chmod +x /usr/bin/docker-compose`
 
@@ -45,10 +57,16 @@
 • Проверка установленной версии Docker Compose.
 • Можно скачать git прямо из командной строки прописав Y
 
+![image](https://github.com/user-attachments/assets/c06a41c9-5f2c-40ff-8178-141dae2987c5)
+
+
 10. `git clone https://github.com/skl256/grafana_stack_for_docker.git`
 
 • выдаст ошибку и предложит скачать git, согласиться и продолжить
 • переход в папку
+
+![image](https://github.com/user-attachments/assets/7dde1437-d12e-49ef-acf9-a3091ae6fc0b)
+
 
 12.`sudo mkdir -p /mnt/common_volume/swarm/grafana/config`
 
@@ -77,6 +95,11 @@
 18.` sudo docker compose up -d`
 
 • команда создает и запускает контейнеры в фоновом режиме, используя конфигурацию из файла docker-compose.yml, с правами суперпользователя.
+
+![image](https://github.com/user-attachments/assets/3816ed11-8c7f-4d76-b515-e7420d94429f)
+![image](https://github.com/user-attachments/assets/9c6741e6-2bce-489e-9816-1c00d2767e95)
+
+
 
 19.` sudo vi docker-compose.yaml`
 
@@ -114,6 +137,9 @@
     * ждем кнопку "Import dashboard"
     * Find and import dashboards for common applications at grafana.com/dashboards: 1860 //ждем кнопку Load
     * Select Prometheus ждем кнопку "Import"
+ 
+      ![image](https://github.com/user-attachments/assets/e461092f-de65-4bc0-a593-414e4b82b7a6)
+
       
       ## VictoriaMetrics
 
@@ -134,6 +160,9 @@
 
 3. `echo -e "# TYPE OILCOINT_metric1 gauge\nOILCOINT_metric1 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus  `
 
+![image](https://github.com/user-attachments/assets/662cd246-40a2-40ce-b198-13d8ee0403f8)
+
+
 • команда отправляет бинарные данные (например, метрики в формате Prometheus) на локальный сервер, который слушает на порту 8428.
 
 4. `curl -G 'http://localhost:8428/api/v1/query' --data-urlencode 'query=OILCOINT_metric1'`
@@ -149,3 +178,8 @@
 Копируем переменную OILCOINT_metric1 и вставляем в query
 
 Нажимаем run
+![image](https://github.com/user-attachments/assets/5642e072-96a5-4a48-9267-4801cf958b61)
+v![image](https://github.com/user-attachments/assets/0a7c9579-2b59-405b-ba1b-657f9e59fd43)
+![image](https://github.com/user-attachments/assets/f8b51cb8-b1fa-45f0-81a7-91729db1ea75)
+
+
